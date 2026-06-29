@@ -34,19 +34,33 @@ OS=$(detect_os)
 ARCH=$(detect_arch)
 info "Detected: $OS / $ARCH"
 
+# ─── Phase -1: SSH key (must be before git clone) ───
+if [ ! -f "$HOME/.ssh/id_ed25519" ] && [ ! -d "$DOTFILES_DIR/.git" ]; then
+    warn "No SSH key found — needed for GitHub access"
+    warn "Options:"
+    warn "  1. Copy from old device: scp old-device:~/.ssh/id_ed25519 ~/.ssh/"
+    warn "  2. Generate new: ssh-keygen -t ed25519 -C 'goldenwave0322@gmail.com'"
+    warn "     Then add to GitHub: https://github.com/settings/keys"
+    warn ""
+    warn "After setting up SSH key, re-run this script."
+    warn "Proceeding with HTTPS clone as fallback..."
+fi
+
 # ─── Phase 0: Clone repo if needed ───
 if [ ! -d "$DOTFILES_DIR/.git" ]; then
     info "Cloning dotfiles repository..."
     mkdir -p "$(dirname "$DOTFILES_DIR")"
-    if command -v git &>/dev/null && ssh -T git@github.com 2>&1 | grep -q "success\|Hi "; then
-        git clone "$REPO_URL" "$DOTFILES_DIR" 2>/dev/null || {
-            warn "SSH clone failed, trying HTTPS..."
-            git clone "https://github.com/TheGoldenWave/dotfiles.git" "$DOTFILES_DIR"
-        }
-        ok "Repository cloned"
+    # Try SSH first (fastest if key exists)
+    if ssh -T git@github.com 2>&1 | grep -q "success\|Hi "; then
+        git clone "$REPO_URL" "$DOTFILES_DIR" 2>/dev/null && ok "Repository cloned (SSH)"
     else
-        warn "No git or SSH key yet — create dotfiles dir for manual setup"
-        mkdir -p "$DOTFILES_DIR"
+        # HTTPS fallback (no SSH key needed, public repo)
+        git clone "https://github.com/TheGoldenWave/dotfiles.git" "$DOTFILES_DIR" 2>/dev/null || \
+        git clone "https://ghfast.top/https://github.com/TheGoldenWave/dotfiles.git" "$DOTFILES_DIR" 2>/dev/null || {
+            err "Failed to clone repository. Check network/VPN."
+            exit 1
+        }
+        ok "Repository cloned (HTTPS)"
     fi
 fi
 
@@ -193,12 +207,41 @@ fi
 
 # ─── Phase 10: NPM global packages ───
 info "Installing npm global packages..."
-NPM_GLOBALS=(bun @anthropic-ai/claude-code @openai/codex @tarojs/cli)
+NPM_GLOBALS=(
+    bun
+    @anthropic-ai/claude-code
+    @openai/codex
+    @tarojs/cli
+    @google/gemini-cli
+    @cloudbase/cloudbase-mcp
+    opencode-ai
+    oh-my-opencode
+    happy-coder
+    agent-browser
+    @spark/run
+)
 for pkg in "${NPM_GLOBALS[@]}"; do
     if ! npm list -g "$pkg" &>/dev/null 2>&1; then
         npm install -g "$pkg" 2>/dev/null && ok "  $pkg installed" || warn "  $pkg install failed"
     fi
 done
+
+# ─── Phase 10b: MCP servers (via npx, no install needed) ───
+info "Verifying MCP server availability..."
+# These run via npx at runtime, just verify they're reachable
+MCP_CHECKS=(
+    "@playwright/mcp@latest"
+    "@remotion/mcp@latest"
+)
+for mcp in "${MCP_CHECKS[@]}"; do
+    info "  $mcp — available via npx (no install needed)"
+done
+
+# ─── Phase 10c: Pencil MCP server ───
+PENCIL_DIR="$HOME/.pencil/mcp"
+if [ ! -d "$PENCIL_DIR" ]; then
+    warn "  Pencil MCP not found — install from pencil.dev if needed"
+fi
 
 # ─── Phase 11: Clone repos ───
 info "Cloning project repositories..."
@@ -208,13 +251,52 @@ bash "$DOTFILES_DIR/scripts/clone-repos.sh" 2>/dev/null || warn "Some repos fail
 info "Syncing skills..."
 bash "$DOTFILES_DIR/scripts/sync-skills.sh" 2>/dev/null || warn "Skills sync had issues"
 
-# ─── Phase 13: SSH key ───
+# ─── Phase 12b: AI Workflow files ───
+info "Installing AI workflow files..."
+if [ -d "$DOTFILES_DIR/dotfiles/ai-workflow" ]; then
+    AI_DIR="$HOME/Documents/AI工作流"
+    mkdir -p "$AI_DIR"
+    cp -f "$DOTFILES_DIR/dotfiles/ai-workflow/"* "$AI_DIR/" 2>/dev/null
+    chmod +x "$AI_DIR/"*.sh 2>/dev/null
+    ok "  AI workflow files installed to ~/Documents/AI工作流/"
+fi
+
+# ─── Phase 12c: Shell helpers ───
+if [ -f "$DOTFILES_DIR/dotfiles/zsh_claude_switch" ]; then
+    cp "$DOTFILES_DIR/dotfiles/zsh_claude_switch" "$HOME/.zsh_claude_switch"
+    ok "  Shell helper .zsh_claude_switch installed"
+fi
+
+# ─── Phase 12d: Codex Desktop App (macOS) ───
+if [ "$OS" = "macos" ] && [ ! -d "/Applications/Codex.app" ]; then
+    warn "  Codex Desktop App not found — install from: https://openai.com/codex/download"
+    warn "  (Optional: CLI codex already installed via npm)"
+fi
+
+# ─── Phase 12e: LaunchAgents (macOS only) ───
+if [ "$OS" = "macos" ] && [ -d "$DOTFILES_DIR/dotfiles/launchagents" ]; then
+    info "Installing LaunchAgents..."
+    LA_DIR="$HOME/Library/LaunchAgents"
+    mkdir -p "$LA_DIR"
+    for plist in "$DOTFILES_DIR/dotfiles/launchagents/"*.plist; do
+        [ -f "$plist" ] || continue
+        fname=$(basename "$plist")
+        cp "$plist" "$LA_DIR/$fname"
+        launchctl unload "$LA_DIR/$fname" 2>/dev/null
+        launchctl load "$LA_DIR/$fname" 2>/dev/null
+        ok "  $fname loaded"
+    done
+fi
+
+# ─── Phase 13: SSH key (final check) ───
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
-    warn "No SSH key found!"
-    warn "Options:"
-    warn "  1. Copy from old device: scp old-device:~/.ssh/id_ed25519 ~/.ssh/"
-    warn "  2. Generate new: ssh-keygen -t ed25519 -C 'goldenwave0322@gmail.com'"
-    warn "     Then add to GitHub: https://github.com/settings/keys"
+    warn ""
+    warn "═══════════════════════════════════════"
+    warn "  SSH key still missing!"
+    warn "  For git push/pull, you need:"
+    warn "  ssh-keygen -t ed25519 -C 'goldenwave0322@gmail.com'"
+    warn "  Then add to: https://github.com/settings/keys"
+    warn "═══════════════════════════════════════"
 fi
 
 # ─── Phase 14: SeaDrive / Knowledge Base ───
