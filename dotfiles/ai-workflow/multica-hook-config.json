@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "path": "/Users/goldenwave/Documents/MyProject/Zhiboke_Claw",
+      "workspace_name": "data-ai",
+      "workspace_id": "b2b717cd-0ae1-4a1e-97f4-38a06eacf47a",
+      "project_name": "AI 托管",
+      "project_id": "3bca42cf"
+    },
+    {
+      "path": "/Users/goldenwave/Documents/MyProject/goldenwave-asia",
+      "workspace_name": "goldenwave",
+      "workspace_id": "a2634170-fac8-4f20-9541-4c4eb2dfb04f",
+      "project_name": "GoldenWave",
+      "project_id": ""
+    },
+    {
+      "path": "/Users/goldenwave/Documents/MyProject/goldenwave-cms-sync",
+      "workspace_name": "goldenwave",
+      "workspace_id": "a2634170-fac8-4f20-9541-4c4eb2dfb04f",
+      "project_name": "GoldenWave",
+      "project_id": ""
+    },
+    {
+      "path": "/Users/goldenwave/Library/CloudStorage/SeaDrive-张金波(10.250.8.32)/我的资料库/Knowledge",
+      "workspace_name": "my-knowledgebase",
+      "workspace_id": "b676cff2-d95e-4f8e-a8b4-fa19df7fb3e6",
+      "project_name": "知识库日常维护",
+      "project_id": "66ee9129"
+    }
+  ]
+}

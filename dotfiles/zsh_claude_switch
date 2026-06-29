@@ -1,0 +1,40 @@
+# Claude Code 模型切换助手
+function claude-switch() {
+    local model=$1
+    if [[ "$model" != "claude-opus-4-6" && "$model" != "claude-sonnet-4-6" ]]; then
+        echo "❌ 请提供正确的模型名称！"
+        echo "可用模型: claude-opus-4-6, claude-sonnet-4-6"
+        return 1
+    fi
+
+    echo "正在切换 Claude Code 到 $model ..."
+
+    export ANTHROPIC_BASE_URL="https://openproxy.zuoyebang.cc/openproxy/rp/pt/anthropic"
+    export ANTHROPIC_AUTH_TOKEN="zyb-379d6c60b53719d43f4c0259a0d6850b@zbkpm_coding"
+    export ANTHROPIC_API_KEY=""
+    export API_TIMEOUT_MS="3000000"
+    export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
+
+    export ANTHROPIC_MODEL="$model"
+    export ANTHROPIC_SMALL_FAST_MODEL="$model"
+
+    export ANTHROPIC_DEFAULT_OPUS_MODEL=""
+    export ANTHROPIC_DEFAULT_SONNET_MODEL=""
+    export ANTHROPIC_DEFAULT_HAIKU_MODEL=""
+
+    echo "✅ 已成功切换到 $model 模式"
+}
+
+# 为 claude-switch 提供 zsh 自动补全功能
+autoload -Uz compinit
+compinit
+
+_claude_switch_completions() {
+    local -a models
+    models=(
+        'claude-opus-4-6'
+        'claude-sonnet-4-6'
+    )
+    compadd "$@" -a models
+}
+compdef _claude_switch_completions claude-switch

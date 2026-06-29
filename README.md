@@ -33,6 +33,13 @@ irm https://raw.githubusercontent.com/TheGoldenWave/dotfiles/main/setup.ps1 | ie
 | **CLI 工具** | gh, multica, opencode 等 ~/bin 工具 |
 | **Node 全局包** | claude-code, codex, bun, tarojs 等 |
 | **Homebrew** | ripgrep, ffmpeg, tmux 等 |
+| **Claude Hooks** | rtk-rewrite.sh (token 重写) |
+| **Codex Agents** | code-reviewer.toml |
+| **SOUL.md** | Hermes 人格设定 |
+| **Memories** | Hermes 持久记忆 (MEMORY.md + USER.md) |
+| **AI 工作流** | 周报/数据分析任务要求、multica hooks |
+| **Shell Helper** | .zsh_claude_switch (模型快捷切换) |
+| **LaunchAgents** | zcode usagebar (macOS) |
 | **项目仓库** | goldenwave-asia, Zhiboke_Claw 等 |
 | **知识库** | SeaDrive / Personal_knowledge_base |
 
@@ -46,28 +53,43 @@ irm https://raw.githubusercontent.com/TheGoldenWave/dotfiles/main/setup.ps1 | ie
 
 ```
 dotfiles/
-├── README.md              # 本文件
-├── setup.sh               # macOS/Linux 一键部署
-├── setup.ps1              # Windows 一键部署
+├── README.md
+├── setup.sh                    # macOS/Linux 一键部署
+├── setup.ps1                   # Windows 一键部署
 ├── dotfiles/
 │   ├── hermes/
-│   │   ├── config.yaml    # Hermes 主配置
-│   │   └── env.template   # 环境变量模板
+│   │   ├── config.yaml         # Hermes 主配置
+│   │   ├── env.template        # 环境变量模板
+│   │   ├── SOUL.md             # Hermes 人格
+│   │   ├── scripts/            # sync/skills-git-sync 等
+│   │   └── memories/           # MEMORY.md + USER.md
 │   ├── claude/
-│   │   └── settings.json  # Claude Code 配置
+│   │   ├── settings.json       # Claude Code 配置
+│   │   ├── CLAUDE.md           # 项目指令
+│   │   └── hooks/              # rtk-rewrite.sh
 │   ├── codex/
-│   │   └── config.toml    # Codex 配置
-│   ├── zshrc              # Shell 配置
-│   ├── zprofile           # Shell Profile
-│   └── gitconfig          # Git 全局配置
+│   │   ├── config.toml         # Codex 配置
+│   │   ├── AGENTS.md           # 项目指令
+│   │   ├── agents/             # code-reviewer.toml
+│   │   └── hooks.json          # Codex hooks
+│   ├── ai-workflow/            # 周报/数据分析任务要求
+│   ├── launchagents/           # macOS LaunchAgents plist
+│   ├── zshrc                   # Shell 配置
+│   ├── zprofile                # Shell Profile
+│   ├── zsh_claude_switch       # 模型快捷切换
+│   └── gitconfig               # Git 全局配置
 ├── bin/
-│   └── README.md          # ~/bin 工具说明
+│   ├── README.md
+│   ├── multica                 # macOS binary
+│   ├── multica-post-commit.py  # Git hook
+│   └── opencode                # wrapper script
 └── scripts/
-    ├── install-tools-mac.sh    # macOS 工具安装
-    ├── install-tools-win.ps1   # Windows 工具安装
-    ├── clone-repos.sh          # 项目仓库 clone
-    ├── restore-secrets.sh      # 密钥恢复引导
-    └── sync-skills.sh          # Skills 同步
+    ├── install-tools-mac.sh
+    ├── install-tools-win.ps1
+    ├── clone-repos.sh
+    ├── restore-secrets.sh
+    ├── sync-skills.sh
+    └── export-current.sh
 ```
 
 ## 🔄 维护
