@@ -1,0 +1,27 @@
+export PATH="$HOME/Library/Python/3.10/bin:$PATH"
+
+# opencode
+export PATH=/Users/goldenwave/.opencode/bin:$PATH
+
+# Claude Code 配置
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export API_TIMEOUT_MS=600000
+
+# OpenAI 兼容配置
+
+
+# Added by CodeBuddy
+export PATH="/Users/goldenwave/.codebuddy/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# 加载 Claude 模型切换脚本
+source ~/.zsh_claude_switch
+
+# 加载 Claude 模型切换脚本
+source ~/.zsh_claude_switchexport CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+
+# Added by zcode installation
+export PATH="/Users/goldenwave/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+alias claude-mem='bun "/Users/goldenwave/.zcode/plugins/marketplaces/zyb-plugins/plugins/claude-mem/scripts/worker-service.cjs"'

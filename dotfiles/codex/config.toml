@@ -1,0 +1,218 @@
+disable_response_storage = true
+model = "gpt-5.5"
+model_provider = "CodexPlusPlus"
+model_reasoning_effort = "medium"
+service_tier = "fast"
+personality = "pragmatic"
+notify = [ "/Users/goldenwave/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended" ]
+
+[marketplaces.openai-bundled]
+last_updated = "2026-06-25T08:24:28Z"
+source_type = "local"
+source = "/Users/goldenwave/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.pua-skills]
+last_updated = "2026-06-25T07:54:40Z"
+last_revision = "d602b75218600aa9063fb2464e22be81388c6e68"
+source_type = "git"
+source = "https://github.com/tanweai/pua.git"
+
+[marketplaces.zyb-plugins]
+last_updated = "2026-06-22T11:56:37Z"
+last_revision = "6e557a86d60a9767a03d3ebb2ba0605159e14439"
+source_type = "git"
+source = "git@git.zuoyebang.cc:pkg/zcode-marketplace.git"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-06-24T05:39:44Z"
+source_type = "local"
+source = "/Users/goldenwave/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\/Users/goldenwave/.codex/.tmp/plugins'
+
+[mcp_servers.cloudbase]
+command = "cloudbase-mcp"
+type = "stdio"
+
+[mcp_servers.cloudbase.env]
+INTEGRATION_IDE = "CodeX"
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+
+[mcp_servers.playwright]
+args = [ "@playwright/mcp@latest" ]
+command = "npx"
+type = "stdio"
+
+[mcp_servers.remotion-documentation]
+args = [ "-y", "@remotion/mcp@latest" ]
+command = "npx"
+type = "stdio"
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/goldenwave/.codex"
+CODEX_HOME = "/Users/goldenwave/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "5504c0782b5c86b7dd08314045b9843e973a230e1be8f7e2e0ba3716fc63c55e"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.616.81150"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[mcp_servers.pencil]
+command = "/Users/goldenwave/.pencil/mcp/trae/out/mcp-server-darwin-arm64"
+args = [ "--app", "trae", "--agent", "codexCLI" ]
+
+[model_providers.custom]
+base_url = "https://ccproxy.yukework.com/v1"
+name = "custom"
+requires_openai_auth = true
+wire_api = "responses"
+
+[model_providers.CodexPlusPlus]
+name = "CodexPlusPlus"
+wire_api = "responses"
+requires_openai_auth = true
+base_url = "https://ccproxy.yukework.com/v1"
+experimental_bearer_token = "__PLACEHOLDER__"
+
+[notice]
+hide_full_access_warning = true
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[plugins."zyb-site-deploy@zyb-plugins"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."latex@openai-bundled"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."build-macos-apps@openai-curated"]
+enabled = true
+
+[plugins."build-ios-apps@openai-curated"]
+enabled = true
+
+[plugins."build-web-apps@openai-curated"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[projects."/Users/goldenwave"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/Python/Wechat/product/LPC_Claw"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/Skills"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/Skills/cognova"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/VibeCoding/Tomorrow"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/share"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/share/TimeFold"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/share/new-project"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Downloads/upload"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/Codex/2026-05-04/computer-used"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/MyProject/Zhiboke_Claw"]
+trust_level = "trusted"
+
+[projects."/Users/goldenwave/Documents/MyProject/goldenwave-asia"]
+trust_level = "trusted"
+
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+ANTHROPIC_AUTH_TOKEN = "__PLACEHOLDER__"
+ANTHROPIC_BASE_URL = "https://openproxy.zuoyebang.cc/openproxy/rp/pt/anthropic"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "gpt-5.4-mini"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-4-8"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-sonnet-4-6"
+ANTHROPIC_MODEL = "claude-opus-4-8"
+CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS = "1"
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1"
+
+[hooks.state."/Users/goldenwave/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:ab5157fb22469d8b80011e68ad52b49b4e0d54e20d6a0fa1e63996ee5d298f14"
+
+[hooks.state."/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:b7bea8fa155d323c58d45a20e5cb469eaa30069a7371ae7c8b75daf153d50dfd"
+
+[hooks.state."/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/.codex/hooks.json:pre_tool_use:0:1"]
+trusted_hash = "sha256:3bda26e8ac8f966afa4eb3f82ed59b7dbfc7323fe476c6a4751b94e4da1b77c9"
+
+[hooks.state."/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:f67330791fc4065de85b6ea3024fd7180e891b423d2b356de554b0825b191802"
+
+[hooks.state."/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:7e170c5993ff67b05efb7bc3ad9cf384e46f46a8e191d47f1ad4664b92baf3c2"
+
+[desktop]
+ambient-suggestions-enabled = true
+composerEnterBehavior = "cmdIfMultiline"
+localeOverride = "zh-CN"
+preventSleepWhileRunning = true
+keepRemoteControlAwakeWhilePluggedIn = true
+conversationDetailMode = "STEPS_PROSE"
+
+[desktop.open-in-target-preferences]
+global = "warp"
+
+[desktop.open-in-target-preferences.perPath]
+"/Users/goldenwave/Documents/MyProject/Zhiboke_Claw" = "warp"
+
+[features]
+js_repl = false

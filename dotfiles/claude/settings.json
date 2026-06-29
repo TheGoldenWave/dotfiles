@@ -1,0 +1,167 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "__PLACEHOLDER__",
+    "ANTHROPIC_BASE_URL": "https://ccproxy.yukework.com",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-5.4-mini",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.7-max",
+    "ANTHROPIC_MODEL": "gpt-5.5",
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_evaluate",
+      "mcp__pencil__batch_design",
+      "mcp__pencil__batch_get",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_close",
+      "Bash(pkill -f \"taro build --type h5\")",
+      "Bash(git checkout:*)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git merge:*)",
+      "mcp__pencil__get_screenshot",
+      "mcp__pencil__open_document",
+      "mcp__playwright__browser_run_code",
+      "Bash(git push:*)",
+      "Bash(xxd)",
+      "mcp__pencil__get_editor_state",
+      "Bash(npx tsc:*)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:10086)",
+      "mcp__playwright__browser_install",
+      "Bash(grep -r \"emoji\\\\|\\\\u{1F\\\\|\\\\u26\\\\|\\\\u21\\\\|\\\\u{1F3\\\\|\\\\u{1F4\\\\|\\\\u{1F50\\\\|\\\\u263\\\\|\\\\u266\\\\|\\\\u270\\\\|\\\\u229\\\\|🔍\\\\|📖\\\\|📕\\\\|⚡\\\\|🎤\\\\|🔊\\\\|🔖\\\\|☺\\\\|♪\\\\|✎\\\\|⊕\\\\|🎧\\\\|⚔\\\\|✨\\\\|💡\\\\|🎙\\\\|⌨\\\\|✏\" src/pages/ --include=*.tsx -l)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i '' \"s/@import ''..\\\\/..\\\\/styles\\\\/responsive'';/@use ''..\\\\/..\\\\/styles\\\\/responsive'' as *;/\" \"$f\")",
+      "Bash(done)",
+      "Bash(sed -i '' \"s/@import ''..\\\\/..\\\\/..\\\\/styles\\\\/responsive'';/@use ''..\\\\/..\\\\/..\\\\/styles\\\\/responsive'' as *;/\" \"$f\")",
+      "Bash(grep -o \"min-width:[0-9]*px\" dist/css/app.*.css)",
+      "Bash(find dist:*)",
+      "Bash(2)",
+      "Bash(head -100 dist/css/app.*.css)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_snapshot",
+      "Bash(tr '}' '\\\\n')",
+      "Bash(cat dist/css/app.*.css)",
+      "Bash(tr ';' '\\\\n')",
+      "WebFetch(domain:docs.pencil.dev)",
+      "WebSearch",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:10086)",
+      "Bash(pkill -f \"mcp-chrome\")",
+      "Read(//Users/goldenwave/.claude/skills/web2pencil/**)",
+      "Read(//Users/goldenwave/.codebuddy/**)",
+      "Read(//Users/goldenwave/.claude/**)",
+      "Bash(find /Users/goldenwave/.claude -name *.json -maxdepth 3)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(npx tcb:*)",
+      "Bash(npm list:*)",
+      "Bash(npx @cloudbase/cli@latest --version)",
+      "mcp__cloudbase__auth",
+      "mcp__cloudbase__createFunction",
+      "mcp__cloudbase__readNoSqlDatabaseStructure",
+      "mcp__cloudbase__writeNoSqlDatabaseStructure",
+      "mcp__cloudbase__writeNoSqlDatabaseContent",
+      "mcp__cloudbase__readNoSqlDatabaseContent",
+      "mcp__cloudbase__getFunctionList",
+      "Read(//Users/goldenwave/Downloads/**)",
+      "Bash(git check-ignore:*)",
+      "Bash(curl -s http://localhost:10086)",
+      "Bash(curl -s -w \"\\\\n\\\\nHTTP_CODE:%{http_code}\" \"https://llm.baifentan.com/openproxy/rp/v1/chat/completions\" -H \"Content-Type: application/json\" -H \"Authorization: Bearer zyb-4a74ba695721acbb628d3637a0f40617@zhiboke_PMgroup\" -d '{:*)",
+      "Bash(for model:*)",
+      "Bash(do echo:*)",
+      "Bash(curl -s \"https://llm.baifentan.com/openproxy/rp/v1/chat/completions\" -H \"Content-Type: application/json\" -H \"Authorization: Bearer zyb-4a74ba695721acbb628d3637a0f40617@zhiboke_PMgroup\" -d '{:*)",
+      "Bash(pkill -f 'taro build --type h5')",
+      "Read(//dev/**)",
+      "Bash(grep -o \"TARO_APP_USE_MOCK[^,}]*\\\\|TARO_APP_LLM_BASE_URL[^,}]*\\\\|TARO_APP_LLM_MODEL[^,}]*\" /Users/goldenwave/Documents/VibeCoding/Tomorrow/dist/js/app.*.js)",
+      "Bash(find /Users/goldenwave/Documents/VibeCoding/Tomorrow/dist -name *.js -type f)",
+      "Bash(curl -s \"http://localhost:10086/js/app.6602e14f.js\")",
+      "Bash(curl -s http://localhost:10086/js/src_pages_voice-chat_index_tsx._chunkhash_.js)",
+      "Bash(curl -s \"http://localhost:10086/js/src_app_boot_js._chunkhash_.js\")",
+      "Bash(npm i:*)",
+      "Bash(codex --version)",
+      "Bash(npx @openai/codex --version)",
+      "Bash(git clone:*)",
+      "WebFetch(domain:github.com)",
+      "Read(//Users/goldenwave/.codex/**)",
+      "Read(//Users/goldenwave/**)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''PIL available''\\)\")",
+      "Bash(python3 -c \"from PIL import ImageFont; f = ImageFont.truetype\\(''/System/Library/Fonts/PingFang.ttc'', 20\\); print\\(''PingFang available''\\)\")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/goldenwave/Documents/Python/Wechat/方案/数字 LPC/虾宝工厂（原智能体管理平台）/虾宝工厂 logo/虾宝工厂@2x.png\")",
+      "Bash(./node_modules/.bin/remotion render:*)",
+      "Edit(~/.claude/skills/C-startup/**)",
+      "Bash(claude plugin:*)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(git rm *)",
+      "Bash(rm -rf 数据资产盘点/.git)",
+      "Bash(rtk git *)",
+      "Bash(rtk git commit -m 'fix: 将数据资产盘点目录作为普通文件提交，移除嵌套git仓库 *)",
+      "Bash(bash /Users/goldenwave/.claude/skills/C-startup/scripts/init.sh \"大通关AI小程序\" \"大通关测评MVP\" \"梅嫣然\" \"1.0.0\" \"初中拉新转化业务线\")",
+      "Bash(python3 -c ' *)",
+      "Bash(command -v obsidian)",
+      "Bash(echo \"exit: $?\")",
+      "mcp__pencil"
+    ],
+    "additionalDirectories": [
+      "/Users/goldenwave/Library/Caches/ms-playwright/mcp-chrome-3e95118",
+      "/Users/goldenwave/.claude/skills/pencil2code",
+      "/Users/goldenwave/.claude/skills/web2pencil",
+      "/Users/goldenwave/.codex",
+      "/Users/goldenwave",
+      "/Users/goldenwave/Documents/VibeCoding/AILPC/.claude/skills",
+      "/Users/goldenwave/.claude/plans",
+      "/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/docs/prd/虾宝工厂",
+      "/Users/goldenwave/Documents/MyProject/Zhiboke_Claw/docs/prd/虾宝协同平台"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/goldenwave/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "pua@pua-skills": true,
+    "zyb-site-deploy@zyb-plugins": true,
+    "zyb-auto-deploy@zyb-plugins": true,
+    "zyb-zcode-usage-bar@zyb-plugins": true,
+    "claude-mem@zyb-plugins": true,
+    "warp@claude-code-warp": true
+  },
+  "extraKnownMarketplaces": {
+    "pua-skills": {
+      "source": {
+        "source": "github",
+        "repo": "tanweai/pua"
+      }
+    },
+    "zyb-plugins": {
+      "source": {
+        "source": "git",
+        "url": "git@git.zuoyebang.cc:pkg/zcode-marketplace.git"
+      }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light"
+}

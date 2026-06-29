@@ -1,0 +1,62 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets (NEVER commit)
+*.key
+*.pem
+id_rsa*
+id_ed25519
+.env
+.env.local
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
+
+# OS-specific caches
+.cache/
+.node_modules/
+
+# Hermes state (keep config, exclude data)
+hermes/state.db*
+hermes/sessions/
+hermes/logs/
+hermes/cache/
+
+# Skills (sync separately, don't store in repo)
+skills/hermes/
+skills/claude/
+skills/codex/
+
+# Binaries (keep README, exclude large binaries)
+# bin/gh (install via: brew install gh)
+
+# Personal data
+Knowledge/
+SeaDrive*/
