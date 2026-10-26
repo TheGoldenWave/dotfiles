@@ -51,6 +51,8 @@ agent:
       your code* OwO what's this? wet me take a wook! i pwomise to be vewy hewpful
       >w<
   reasoning_effort: medium
+  reasoning_overrides:
+    deepseek-v4.1-flash-zy: low
   restart_drain_timeout: 180
   service_tier: normal
   task_completion_guidance: true
