@@ -254,26 +254,74 @@ curator:
 custom_providers:
 - api_key: ${HERMES_CODING_PLAN_SK}
   base_url: https://ccproxy.yukework.com/v1
-  model: qwen3.7-max
+  model: gpt-6.1-sol
   models:
+    claude-fable-5:
+      context_length: 200000
+    claude-fable-5-1:
+      context_length: 200000
+    claude-haiku-5-5:
+      context_length: 200000
     claude-opus-4-6:
       context_length: 200000
     claude-opus-4-7:
       context_length: 200000
     claude-opus-4-8:
       context_length: 200000
+    claude-opus-5:
+      context_length: 200000
+    claude-opus-5-5:
+      context_length: 200000
     claude-sonnet-4-6:
       context_length: 200000
+    claude-sonnet-5:
+      context_length: 200000
+    claude-sonnet-5-5:
+      context_length: 200000
+    deepseek-v4-flash:
+      context_length: 128000
+    deepseek-v4-flash-zy:
+      context_length: 128000
     deepseek-v4-pro:
+      context_length: 128000
+    deepseek-v4-pro-zy:
+      context_length: 128000
+    deepseek-v4.1-flash:
+      context_length: 128000
+    deepseek-v4.1-flash-zy:
       context_length: 128000
     gpt-5.4:
       context_length: 1000000
     gpt-5.4-mini:
       context_length: 400000
     gpt-5.5:
+      context_length: 272000
+    gpt-5.6-luna:
       context_length: 1000000
+    gpt-5.6-sol:
+      context_length: 1000000
+    gpt-5.6-terra:
+      context_length: 1000000
+    gpt-6-astra:
+      context_length: 1000000
+    gpt-6-luna:
+      context_length: 272000
+    gpt-6-sol:
+      context_length: 272000
+    gpt-6.1-sol:
+      context_length: 272000
     gpt-image-2:
       context_length: 0
+    gpt-image-2.5-flare:
+      context_length: 0
+    gpt-image-2.5-sunburst:
+      context_length: 0
+    MiniMax-H3:
+      context_length: 128000
+    MiniMax-H3-Context-IR:
+      context_length: 128000
+    qwen-3.8-free:
+      context_length: 200000
     qwen3.6-plus:
       context_length: 1000000
     qwen3.7-max:
@@ -479,7 +527,7 @@ model:
   api_key: ${HERMES_CODING_PLAN_SK}
   base_url: https://ccproxy.yukework.com/v1
   context_length: 1000000
-  default: gpt-5.5
+  default: gpt-6.1-sol
   max_output_tokens: 128000
   provider: custom:coding-plan
 model_catalog:

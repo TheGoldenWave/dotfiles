@@ -1,11 +1,13 @@
 disable_response_storage = true
-model = "gpt-5.5"
+model_auto_compact_token_limit = 800000
+model_context_window = 1000000
+model = "gpt-6.1-sol"
 model_provider = "CodexPlusPlus"
 model_reasoning_effort = "medium"
-service_tier = "fast"
 personality = "pragmatic"
 notify = [ "/Users/goldenwave/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended" ]
 
+model_catalog_json = "/Users/goldenwave/.codex/codexplusplus/codingplan-model-catalog.json"
 [marketplaces.openai-bundled]
 last_updated = "2026-06-25T08:24:28Z"
 source_type = "local"
@@ -82,7 +84,7 @@ requires_openai_auth = true
 wire_api = "responses"
 
 [model_providers.CodexPlusPlus]
-name = "CodexPlusPlus"
+name = "Coding Plan（非 ChatGPT 会员额度）"
 wire_api = "responses"
 requires_openai_auth = true
 base_url = "https://ccproxy.yukework.com/v1"
